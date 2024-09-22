@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>664</width>
-    <height>461</height>
+    <width>684</width>
+    <height>494</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +23,7 @@
      <rect>
       <x>-70</x>
       <y>-160</y>
-      <width>751</width>
+      <width>791</width>
       <height>661</height>
      </rect>
     </property>
@@ -44,7 +44,7 @@
      <rect>
       <x>40</x>
       <y>50</y>
-      <width>411</width>
+      <width>431</width>
       <height>71</height>
      </rect>
     </property>
@@ -58,17 +58,70 @@
      <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>INFORMAÇÕES DA REDE</string>
+     <string>Tabela de Sub-Redes</string>
     </property>
    </widget>
    <widget class="QTableWidget" name="table_subredes">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>20</x>
       <y>140</y>
-      <width>451</width>
-      <height>221</height>
+      <width>631</width>
+      <height>241</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="botao_voltar">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>420</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Georgia</family>
+      <pointsize>15</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>UpArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+color: rgb(0, 0, 0);
+}
+
+QPushButton{
+background-color: rgb(255, 255, 255)
+}
+
+QPushButton:hover{
+	background-color: lightblue
+}
+
+QPushButton{
+border:3px solid black;
+border-radius: 15px;
+padding: 2px;
+}</string>
+    </property>
+    <property name="text">
+     <string>VOLTAR</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>imagens/9868474931649315515-128.png</normaloff>imagens/9868474931649315515-128.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
     </property>
    </widget>
   </widget>

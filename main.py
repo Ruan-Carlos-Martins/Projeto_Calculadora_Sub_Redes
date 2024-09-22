@@ -1,6 +1,18 @@
 from PyQt6 import uic, QtWidgets
-from PyQt6.QtWidgets import QTableWidgetItem
+from PyQt6.QtWidgets import QTableWidgetItem, QLineEdit
 from ipaddress import IPv4Network, AddressValueError
+
+def voltar_tela_calculo():
+    # Fecha a segunda tela
+    segunda_tela.close()
+    
+    # Limpa os campos da primeira tela
+    for campo in primeira_tela.findChildren(QLineEdit):
+        campo.clear()
+    
+    # Reabre a primeira tela
+    primeira_tela.show()
+
 
 def tela_calc():
     segunda_tela.show()  # Exibe a segunda tela
@@ -39,18 +51,32 @@ def tela_calc():
 
         # Configura a tabela na segunda tela para exibir os resultados
         segunda_tela.table_subredes.setRowCount(len(subredes))  # Define o número de linhas
-        segunda_tela.table_subredes.setColumnCount(4)  # Define o número de colunas
-        headers = ["Endereço de Rede", "Primeiro IP", "Último IP", "Broadcast"]
+        segunda_tela.table_subredes.setColumnCount(6)  # Define o número de colunas
+        headers = ["Endereço de Rede", "Prefixo", "Primeiro IP host", "Último IP host", "Broadcast", "Máscara",]
         segunda_tela.table_subredes.setHorizontalHeaderLabels(headers)  # Define os cabeçalhos da tabela
         
         # Preenche a tabela com os dados das sub-redes
         for row_num, subrede in enumerate(subredes):
-            segunda_tela.table_subredes.setItem(row_num, 0, QTableWidgetItem(str(subrede.network_address)))  # Endereço de Rede
-            primeira_ip = subrede[1]  # Primeiro IP utilizável
-            ultima_ip = subrede[-2]  # Último IP utilizável
-            segunda_tela.table_subredes.setItem(row_num, 1, QTableWidgetItem(str(primeira_ip)))  # Primeiro IP
-            segunda_tela.table_subredes.setItem(row_num, 2, QTableWidgetItem(str(ultima_ip)))  # Último IP
-            segunda_tela.table_subredes.setItem(row_num, 3, QTableWidgetItem(str(subrede.broadcast_address)))  # Endereço de Broadcast
+            # Endereço de Rede
+            segunda_tela.table_subredes.setItem(row_num, 0, QTableWidgetItem(str(subrede.network_address)))
+            
+            # Prefixo da Sub-rede
+            segunda_tela.table_subredes.setItem(row_num, 1, QTableWidgetItem(f"/{subrede.prefixlen}"))           
+            
+            
+            # Primeiro IP utilizável
+            primeira_ip = subrede[1]
+            segunda_tela.table_subredes.setItem(row_num, 2, QTableWidgetItem(str(primeira_ip)))
+            
+            # Último IP utilizável
+            ultima_ip = subrede[-2]
+            segunda_tela.table_subredes.setItem(row_num, 3, QTableWidgetItem(str(ultima_ip)))
+            
+            # Endereço de Broadcast
+            segunda_tela.table_subredes.setItem(row_num, 4, QTableWidgetItem(str(subrede.broadcast_address)))
+
+            # Máscara da Sub-rede
+            segunda_tela.table_subredes.setItem(row_num, 5, QTableWidgetItem(str(subrede.netmask)))
 
         # Fecha a primeira tela
         primeira_tela.close()
@@ -69,6 +95,9 @@ segunda_tela = uic.loadUi("segunda_tela.ui")
 
 # Configurando o botão da primeira tela para chamar a função de cálculo
 primeira_tela.botao_tela_principal.clicked.connect(tela_calc)
+
+# Botões segunda tela
+segunda_tela.botao_voltar.clicked.connect(voltar_tela_calculo)
 
 # Exibindo a primeira tela
 primeira_tela.show()
