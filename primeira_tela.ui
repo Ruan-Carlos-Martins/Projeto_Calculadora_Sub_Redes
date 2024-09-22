@@ -10,6 +10,13 @@
     <height>465</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string>CALCULADORA</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>imagens/internet.png</normaloff>imagens/internet.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
@@ -29,7 +36,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../../../Downloads/1211368-global-tecnologia-computador-rede-fundo-gratis-vetor.jpg</pixmap>
+     <pixmap>imagens/1211368-global-tecnologia-computador-rede-fundo-gratis-vetor.jpg</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="text1">
@@ -120,7 +127,7 @@ padding: 2px;
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../PROJETO-FACULDADE/imagens/9868474931649315515-128.png</normaloff>../PROJETO-FACULDADE/imagens/9868474931649315515-128.png</iconset>
+      <normaloff>imagens/9868474931649315515-128.png</normaloff>imagens/9868474931649315515-128.png</iconset>
     </property>
     <property name="iconSize">
      <size>
